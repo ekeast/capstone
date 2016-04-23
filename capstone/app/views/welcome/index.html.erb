@@ -1,2 +1,7 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1>Welcome to Capstone</h1>
+<p>Find all of the Best Articles</p>
+
+<% if current_user %>
+  <%= link_to 'View ALL Articles', articles_path, method: :get %>
+  <%= link_to 'Add A New Article', new_article_path %>
+<% end %>
