@@ -1,2 +1,11 @@
 <h1>Welcome to Capstone</h1>
+<<<<<<< HEAD
 <p>Find the best articles of the day</p>
+=======
+<p>Find all of the Best Articles</p>
+
+<% if current_user %>
+  <%= link_to 'View ALL Articles', articles_path, method: :get %>
+  <%= link_to 'Add A New Article', new_article_path %>
+<% end %>
+>>>>>>> articles
