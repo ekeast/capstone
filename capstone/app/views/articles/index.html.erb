@@ -13,7 +13,12 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= link_to article.link, article.link, target: "_blank" %></td>
+        <td><%= link_to article.link, article.link, target: "_blank" %>
+        <%= imdb_style_rating_for @article, current_user %>
+          <% if current_user %>
+            Rating: <%= rating_for @article, "link" %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
