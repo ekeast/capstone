@@ -11,12 +11,12 @@
   </thead>
 
   <tbody>
-    <% @articles.each do |article| %>
+    <% @articles.sort_by{|article| article.rates("link").average(:stars) }.reverse.each do |article| %>
       <tr>
-        <td><%= link_to article.link, article.link, target: "_blank" %>
-        <%= imdb_style_rating_for @article, current_user %>
+        <td class="rating_column"><%= link_to article.link, article.link, target: "_blank" %>
+        <%= imdb_style_rating_for article, current_user %>
           <% if current_user %>
-            Rating: <%= rating_for @article, "link" %>
+            Rating: <%= rating_for article, "link", disable_after_rate: false, imdb_avg: true %></br>
           <% end %>
         </td>
         <td><%= link_to 'Show', article %></td>
