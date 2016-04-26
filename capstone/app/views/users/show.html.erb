@@ -1,0 +1,5 @@
+<h1>Articles I've Rated</h1>
+
+<% current_user.articles.rates("link").each do |article| %>
+  <%= article %>
+<% end %>

@@ -2,6 +2,7 @@
 <p>Find all of the Best Articles</p>
 
 <% if current_user %>
+  <%= link_to 'My Page', users_show_path, method: :get %>
   <%= link_to 'View ALL Articles', articles_path, method: :get %>
   <%= link_to 'Add A New Article', new_article_path %>
 <% end %>

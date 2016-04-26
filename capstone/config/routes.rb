@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   post '/rate' => 'rater#create', :as => 'rate'
   resources :articles
   get 'welcome/index'
