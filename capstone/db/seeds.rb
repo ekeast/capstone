@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+20.times do
+  User.create!(
+  provider: "facebook",
+  uid: Faker::Company.swedish_organisation_number,
+  name: Faker::Name.name
+  )
+end
+
+users = User.all
+
+50.times do
+  Article.create!(
+  link: Faker::Internet.url
+  )
+end
+
+articles = Article.all
+
+500.times do
