@@ -15,3 +15,17 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
+
+$.getScript('http://ivaynberg.github.io/select2/select2-2.1/select2.js',function(){
+
+  $("#mySel").select2({
+    allowClear:true
+  });
+
+  $('.single option').click(function() {
+    // only affects options contained within the same optgroup
+    // and doesn't include this
+    $(this).siblings().prop('selected', false);
+   });
+
+});

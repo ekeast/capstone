@@ -11,6 +11,8 @@
   <% if current_user %>
     Signed in as <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <%= link_to 'My Page', users_show_path, method: :get %>
+    <%= link_to 'View ALL Articles', articles_path, method: :get %>
   <% else %>
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>

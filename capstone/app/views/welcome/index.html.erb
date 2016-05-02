@@ -6,3 +6,8 @@
   <%= link_to 'View ALL Articles', articles_path, method: :get %>
   <%= link_to 'Add A New Article', new_article_path %>
 <% end %>
+
+<% @articles.sort_by{|article| article.rates("link").average(:stars) || 0 }.reverse.each do |article| %>
+  <%= link_to article.link, article.link, target: "_blank" %> <%= link_to 'Show', article %> <%= link_to 'Edit', edit_article_path(article) %> <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %> </br>
+  Rating: <%= rating_for article, "link", disable_after_rate: false %>
+<% end %>

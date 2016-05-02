@@ -24,3 +24,16 @@ end
 articles = Article.all
 
 500.times do
+  Rate.create!(
+  rater_id: users.sample.id,
+  rateable_id: articles.sample.id,
+  rateable_type: "Article",
+  stars: Faker::Number.between(1, 5),
+  dimension: "link",
+  )
+end
+
+puts "Seed finished"
+puts "#{User.count} users created"
+puts "#{Article.count} articles created"
+puts "#{Rate.count} ratings created"

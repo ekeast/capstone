@@ -1,32 +1,18 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Articles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Link</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<select id="mySel">
+  <option>Daily</option>
+  <option>Weekly</option>
+  <option>Monthly</option>
+</select></br></br>
 
-  <tbody>
-    <% @articles.sort_by{|article| article.rates("link").average(:stars) }.reverse.each do |article| %>
-      <tr>
-        <td class="rating_column"><%= link_to article.link, article.link, target: "_blank" %>
-        <%= imdb_style_rating_for article, current_user %>
-          <% if current_user %>
-            Rating: <%= rating_for article, "link", disable_after_rate: false, imdb_avg: true %></br>
-          <% end %>
-        </td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<form>
+  <%= select_tag "article", options_from_collection_for_select(@articles, "id", "link") %>
+</form>
 
-<br>
+<% @articles.sort_by{|article| article.rates("link").average(:stars) || 0 }.reverse.each do |article| %>
+  <%= link_to article.link, article.link, target: "_blank" %> <%= link_to 'Show', article %> <%= link_to 'Edit', edit_article_path(article) %> <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %> </br>
+  Rating: <%= rating_for article, "link", disable_after_rate: false %>
+<% end %>
 
 <%= link_to 'New Article', new_article_path %>

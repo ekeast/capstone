@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'groupdate'
+
 gem 'foundation-rails'
 
 gem 'ratyrate', github: 'wazery/ratyrate'
@@ -29,11 +31,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'figaro'
 
-<<<<<<< HEAD
 gem 'bootstrap-sass'
-=======
+
 gem 'faker'
->>>>>>> create_seeds
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

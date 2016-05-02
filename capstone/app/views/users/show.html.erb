@@ -1,5 +1,5 @@
 <h1>Articles I've Rated</h1>
 
-<% current_user.articles.rates("link").each do |article| %>
-  <%= article %>
+<% @articles.sort_by{|article| article.created_at}.each do |article| %>
+  <%= link_to article.link, article.link, target: "_blank" %> Rating: <%= rating_for_user article, current_user, "link", disable_after_rate: false %></br>
 <% end %>
